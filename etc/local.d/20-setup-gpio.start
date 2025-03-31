@@ -1,0 +1,4 @@
+#!/bin/sh
+chown root:gpio /dev/gpiomem
+chmod g+rw /dev/gpiomem
+insmod /opt/kmodules/devmem-full-access.ko || true

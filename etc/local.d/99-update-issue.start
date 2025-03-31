@@ -1,0 +1,9 @@
+#!/bin/sh
+IP_ADDR=$(ip addr show dev wlan0 | grep 'inet ' | awk '{print $2}')
+
+cat > /etc/issue << EOF
+Welcome to Photoboot Kiosk
+Kernel: \r on an \m (\l)
+
+wlan0: $IP_ADDR
+EOF

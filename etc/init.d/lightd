@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+
+name="lightd"
+command="/opt/bin/lightd"
+command_args="-l 0.0.0.0:8085"
+supervisor=supervise-daemon
+
+output_log=/tmp/lightd.log
+error_log=/tmp/lightd.log
+pidfile=/run/lightd.pid
+
+depend() {
+    need net
+    use logger
+}
