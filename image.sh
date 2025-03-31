@@ -115,6 +115,9 @@ cp "$INPUT_PATH"/home/kiosk/.bashrc "$DATAFS_PATH"/home/kiosk/.bashrc
 
 step "Add lightd"
 mkdir -p "$ROOTFS_PATH"/opt/bin
+
+# TODO: Download from GH Releases. For now we assume it's in ./opt/bin
+
 cp "$INPUT_PATH"/opt/bin/lightd "$ROOTFS_PATH"/opt/bin/lightd
 cp "$INPUT_PATH"/etc/init.d/lightd "$ROOTFS_PATH"/etc/init.d/lightd
 chroot_exec rc-update add lightd default
