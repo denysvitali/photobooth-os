@@ -6,5 +6,5 @@ docker run \
   --rm \
   --env-file .env \
   -v "$PWD":/input \
-  -v "$PWD":/output \
+  -v "$PWD/output":/output \
   "$DOCKER_IMAGE"
