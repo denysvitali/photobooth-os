@@ -119,7 +119,7 @@ step "Add lightd"
 mkdir -p "$ROOTFS_PATH"/opt/bin
 
 # TODO: Validate binary source (SLSA)
-wget -O $ROOTFS_PATH"/opt/bin/lightd \
+wget -O "$ROOTFS_PATH"/opt/bin/lightd \
   "https://github.com/denysvitali/lightd/releases/download/$LIGHTD_VERSION/lightd-linux-arm64"
 chmod a+x "$ROOTFS_PATH"/opt/bin/lightd
 
