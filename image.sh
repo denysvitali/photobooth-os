@@ -1,4 +1,6 @@
 #!/bin/sh
+LIGHTD_VERSION="v0.0.2"
+
 _step_counter=0
 step() {
 	_step_counter=$(( _step_counter + 1 ))
@@ -116,9 +118,11 @@ cp "$INPUT_PATH"/home/kiosk/.bashrc "$DATAFS_PATH"/home/kiosk/.bashrc
 step "Add lightd"
 mkdir -p "$ROOTFS_PATH"/opt/bin
 
-# TODO: Download from GH Releases. For now we assume it's in ./opt/bin
+# TODO: Validate binary source (SLSA)
+wget -O $ROOTFS_PATH"/opt/bin/lightd \
+  "https://github.com/denysvitali/lightd/releases/download/$LIGHTD_VERSION/lightd-linux-arm64"
+chmod a+x "$ROOTFS_PATH"/opt/bin/lightd
 
-cp "$INPUT_PATH"/opt/bin/lightd "$ROOTFS_PATH"/opt/bin/lightd
 cp "$INPUT_PATH"/etc/init.d/lightd "$ROOTFS_PATH"/etc/init.d/lightd
 chroot_exec rc-update add lightd default
 
